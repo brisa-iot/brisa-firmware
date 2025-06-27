@@ -177,29 +177,29 @@
 /**
  * ADC -> Anemometer Configuration --------------------------------------------------------------------
  */
-#define ADC_ANEMOMETER_CHANNEL      ADC1_CHANNEL_3   // Default to GPIO39 for ADC1 channel 3
-#define ADC_ANEMOMETER_ATTEN        ADC_ATTEN_DB_11 
-#define ADC_ANEMOMETER_SCALE        ((5.0f * 6.0f ) / ADC_MAX_COUNTS) 
-#define ADC_ANEMOMETER_OFFSET       0.0f
+#define ANEMOMETER_ADC_CHANNEL      ADC1_CHANNEL_3   // Default to GPIO39 for ADC1 channel 3
+#define ANEMOMETER_ADC_ATTEN        ADC_ATTEN_DB_11 
+#define ANEMOMETER_ADC_SCALE        ((5.0f * 6.0f ) / ADC_MAX_COUNTS) 
+#define ANEMOMETER_ADC_OFFSET       0.0f
 /**
  * ADC -> pH Sensor Configuration ---------------------------------------------------------------------
  */
 #define PH_ADC_CHANNEL              ADC1_CHANNEL_4   // ADC1 channel 4 --> GPIO32
-#define ADC_PH_ATTEN                ADC_ATTEN_DB_11
+#define PH_ADC_ATTEN                ADC_ATTEN_DB_11
 #define PH_SCALE                    1.0f
 #define PH_OFFSET                   0.0f
 /**
  * ADC -> Conductivity Sensor Configuration -----------------------------------------------------------
  */
 #define CONDUCTIVITY_ADC_CHANNEL    ADC1_CHANNEL_6   // ADC1 channel 6 --> GPIO34
-#define ADC_CONDUCTIVITY_ATTEN      ADC_ATTEN_DB_11
+#define CONDUCTIVITY_ADC_ATTEN      ADC_ATTEN_DB_11
 #define CONDUCTIVITY_SCALE          1.0f
 #define CONDUCTIVITY_OFFSET         0.0f
 /**
  * ADC -< Dissolved Oxygen Sensor Configuration -------------------------------------------------------
  */
 #define DISSOLVED_O2_ADC_CHANNEL    ADC1_CHANNEL_7    // ADC1 channel 7 --> GPIO35
-#define ADC_DISSOLVED_O2_ATTEN     ADC_ATTEN_DB_11
+#define DISSOLVED_O2_ADC_ATTEN     ADC_ATTEN_DB_11
 #define DISSOLVED_O2_SCALE          1.0f
 #define DISSOLVED_O2_OFFSET         0.0f
 

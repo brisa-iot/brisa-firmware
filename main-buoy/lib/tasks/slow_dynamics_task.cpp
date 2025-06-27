@@ -7,21 +7,21 @@ static const char* TAG = "SlowDynamicsTask";
 // ------------------------- Global Configurations -------------------------
 const ADC_Config_t ph_config ={
     .adc_channel = PH_ADC_CHANNEL, 
-    .adc_atten = ADC_PH_ATTEN,
+    .adc_atten = PH_ADC_ATTEN,
     .scale = PH_SCALE,
     .offset = PH_OFFSET
 }; 
 
 const ADC_Config_t conductivity_config = {
     .adc_channel = CONDUCTIVITY_ADC_CHANNEL, 
-    .adc_atten = ADC_CONDUCTIVITY_ATTEN,
+    .adc_atten = CONDUCTIVITY_ADC_ATTEN,
     .scale = CONDUCTIVITY_SCALE,
     .offset = CONDUCTIVITY_OFFSET
 };
 
 const ADC_Config_t dissolved_o2_config = {
     .adc_channel = DISSOLVED_O2_ADC_CHANNEL, 
-    .adc_atten = ADC_DISSOLVED_O2_ATTEN,
+    .adc_atten = DISSOLVED_O2_ADC_ATTEN,
     .scale = DISSOLVED_O2_SCALE,
     .offset = DISSOLVED_O2_OFFSET
 };

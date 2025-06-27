@@ -24,10 +24,10 @@ const BME280_Config_t bme280_config = {
     .pressure_hPa_scale = BME280_PRESSURE_HPA_SCALE
 };
 const ADC_Config_t anemometer_config = {
-    .adc_channel = ADC_ANEMOMETER_CHANNEL,
-    .adc_atten = ADC_ANEMOMETER_ATTEN,
-    .scale = ADC_ANEMOMETER_SCALE,
-    .offset = ADC_ANEMOMETER_OFFSET
+    .adc_channel = ANEMOMETER_ADC_CHANNEL,
+    .adc_atten = ANEMOMETER_ADC_ATTEN,
+    .scale = ANEMOMETER_ADC_SCALE,
+    .offset = ANEMOMETER_ADC_OFFSET
 };
 const UART_Config_t modbus_config = {
     .baud_rate = MODBUS_RS485_BAUD_RATE,

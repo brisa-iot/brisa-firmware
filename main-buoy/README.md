@@ -27,7 +27,7 @@ The BRISA firmware is built to run on an **Espressif ESP32 Dev Board**, orchestr
       - ⏰ **Timer-based interrupt**: triggers the start of the next measurement period.
       - 📡 **UART interrupt**: occurs when a **LoRa message is received**, allowing asynchronous remote activation or reconfiguration.
     * Sensor power rails and subsystems are dynamically enabled or disabled as required, significantly reducing power consumption during idle periods.
-* **📡 Robust Data Transmission:** Processed data is transmitted via UART to a **LoRa module** (e.g., LILYGO TTGO SX1262), which then forwards it to a remote MQTT broker or gateway for seamless integration.
+* **📡 Robust Data Transmission:** Processed data is transmitted via UART to a **LoRa module** (e.g., LILYGO TTGO SX1262), which then forwards it to receiver node.
 * **💾 High-Rate IMU Data Logging:** At the end of each measurement window, high-rate IMU data is logged to flash memory (LittleFS) as `.csv` files, organized by date. This serves as the sole onboard local storage mechanism.
 
 The firmware leverages the **ESP-IDF** and **Arduino** frameworks, structured with **FreeRTOS tasks** to efficiently manage sampling, logging, and communication processes.
