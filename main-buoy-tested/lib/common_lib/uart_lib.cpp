@@ -49,7 +49,7 @@ void GPSSensor::get_gps_time(SensorData* data) {
     }
 
     else {
-        data->gpsData.timestamp_s = INIT_TIMESTAMP + (millis()/1000);
+        data->gpsData.timestamp_s = INIT_TIMESTAMP + (uint64_t)(millis()/1000);
     }
 }
 
