@@ -46,6 +46,6 @@ esp_err_t ADC::initialize() {
 
 float ADC::get_value() {
     int raw_adc_value = adc1_get_raw(_channel);
-    float final_value = (float)raw_adc_value * _scale + _offset;
+    float final_value = (float)(raw_adc_value * _scale + _offset);
     return final_value;
 }

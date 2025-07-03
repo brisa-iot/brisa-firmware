@@ -21,7 +21,7 @@
 
 #define ADC_CH_3        ADC1_CHANNEL_7  // ADC1 channel 7 --> GPIO35
 
-#define ONE_WIRE_BUS    33              // GPIO33 pin for OneWire bus
+#define ONE_WIRE_BUS     33              // GPIO33 pin for OneWire bus
 #define CONVERSION_DELAY 750            // Delay for DS18B20 conversion in milliseconds
 
 

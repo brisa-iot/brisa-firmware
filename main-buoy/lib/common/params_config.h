@@ -16,14 +16,14 @@
  * This macro defines the interval in minutes for the measurement cycle.
  * It is set to DEFAULT 60 minutes (1 hour) to wake up the system every hour for measurements.
  */
-#define MEASUREMENT_INTERVAL_MINUTES    0.1//60     // Wake up every 1 hour
+#define MEASUREMENT_INTERVAL_MINUTES    (60)     // Wake up every 1 hour
 #define MEASUREMENT_INTERVAL_US         (MEASUREMENT_INTERVAL_MINUTES * 60 * 1000000ULL) // Convert to microseconds
 /**
  * MACRO: MEASUREMENT_WINDOW_MINUTES
  * This macro defines the duration in minutes for the measurement window.
  * It is set to DEFAULT 20 minutes to take measurements for 20 minutes during each cycle.
  */
-#define MEASUREMENT_WINDOW_MINUTES      2//10     // Take measurements for 10 minutes
+#define MEASUREMENT_WINDOW_MINUTES      (10)     // Take measurements for 10 minutes
 #define MEASUREMENT_WINDOW_US           (MEASUREMENT_WINDOW_MINUTES * 60 * 1000000ULL) // Convert to microseconds
 /**
  * MACRO: SENSOR_INITIALIZATION_DELAY_MS
@@ -149,7 +149,7 @@
  * Power Monitor Measurement Window Configurations -------------------------------------------------------------
  */
 // --- Configuration for Medium Dynamics Sampling ---
-#define SAMPLE_TIME_MEDIUM_DYNAMICS_MS  (6000)  // 6 seconds per sample
+#define SAMPLE_TIME_MEDIUM_DYNAMICS_MS  (6000)   // 6 seconds per sample
 #define SAMPLES_TO_AVERAGE_MEDIUM       (10)     // 10 raw samples make one averaged data point
 // --- Configuration for Power Monitor Averaging ---
 #define SAMPLE_TIME_POWER_MONITOR_MS    (6000)   // 6 seconds per sample
@@ -193,13 +193,13 @@
  */
 #define CONDUCTIVITY_ADC_CHANNEL    ADC1_CHANNEL_6   // ADC1 channel 6 --> GPIO34
 #define CONDUCTIVITY_ADC_ATTEN      ADC_ATTEN_DB_11
-#define CONDUCTIVITY_SCALE          1.0f
+#define CONDUCTIVITY_SCALE          (20 * 1000 / )
 #define CONDUCTIVITY_OFFSET         0.0f
 /**
  * ADC -< Dissolved Oxygen Sensor Configuration -------------------------------------------------------
  */
 #define DISSOLVED_O2_ADC_CHANNEL    ADC1_CHANNEL_7    // ADC1 channel 7 --> GPIO35
-#define DISSOLVED_O2_ADC_ATTEN     ADC_ATTEN_DB_11
+#define DISSOLVED_O2_ADC_ATTEN      ADC_ATTEN_DB_11
 #define DISSOLVED_O2_SCALE          1.0f
 #define DISSOLVED_O2_OFFSET         0.0f
 

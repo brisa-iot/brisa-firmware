@@ -119,7 +119,13 @@ float INA219Sensor::get_battery_voltage() {
 
 float INA219Sensor::get_battery_current() {
     batteryCurrent = ina219Battery.getCurrent_mA(); 
-    batteryCurrent = batteryCurrent / 1000.0f; 
+    /**
+     * Se puede ver en el esquemático que el positivo de la batería 
+     * va a la entrada v- del INA219, y el negativo de la batería
+     * va a la entrada v+ del INA219. Por lo tanto, el INA219
+     * mide la corriente negativa, y por lo tanto, se multiplica por -1
+     */
+    batteryCurrent = (-1) * (batteryCurrent / 1000.0f); 
     return batteryCurrent;
 }
 

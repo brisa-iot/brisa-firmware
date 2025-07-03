@@ -127,7 +127,8 @@ esp_err_t INA219::getRawData(
     }
 
     *battery_voltage = _ina219_battery.getBusVoltage_V();
-    *battery_current = _ina219_battery.getCurrent_mA();
+    // Battery V+ is connected to the INA219's V- pin, so we need to invert the current sign
+    *battery_current = (-1) * _ina219_battery.getCurrent_mA();
     *solar_voltage = _ina219_solar.getBusVoltage_V();
     *solar_current = _ina219_solar.getCurrent_mA();
 
