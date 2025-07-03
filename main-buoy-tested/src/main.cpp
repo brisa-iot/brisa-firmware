@@ -113,8 +113,7 @@ void read_sensors(char* message, size_t messageSize) {
 
   // Simulate GPS/GNSS
   float latitude = sensorData.gpsData.latitude;  
-  float longitude = sensorData.gpsData.longitude; 
-  float altitude = sensorData.gpsData.altitude;                    
+  float longitude = sensorData.gpsData.longitude;                
 
   // Simulate IMU
   float accel_x = sensorData.imuPosData.accelX;        
@@ -135,16 +134,16 @@ void read_sensors(char* message, size_t messageSize) {
           "\"ta\":%.1f,\"hr\":%.1f,\"pa\":%.1f,"
           "\"ws\":%.1f,\"wd\":%d,"
           "\"tw\":%.1f,\"ph\":%.2f,\"ec\":%.1f,\"do\":%.2f,"
-          "\"lat\":%.4f,\"lon\":%.4f,\"alt\":%.1f,"
+          "\"lat\":%.4f,\"lon\":%.4f,"
           "\"a\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},"
           "\"g\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},"
-          "\"i\":%.4f,\"soc\":%.2f"
+          "\"i\":%.2f,\"soc\":%.2f"
           "}",
           timestamp,
           temperature_air, humidity, pressure,
           wind_speed, wind_direction,
           water_temp, ph, conductivity, dissolved_oxygen,
-          latitude, longitude, altitude,
+          latitude, longitude,
           accel_x, accel_y, accel_z,
           gyro_x, gyro_y, gyro_z, currentBat, SOC);
 }

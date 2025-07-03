@@ -40,8 +40,7 @@ struct ImuPosData {
 
 struct GPSData {
     double latitude; 
-    double longitude; 
-    double altitude;     
+    double longitude;   
     int hour; 
     int minute;
     int second;

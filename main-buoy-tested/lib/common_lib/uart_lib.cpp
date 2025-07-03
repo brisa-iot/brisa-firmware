@@ -19,11 +19,9 @@ void GPSSensor::get_location(SensorData* data) {
     if (gps.location.isValid()) {
         data->gpsData.latitude  = gps.location.lat();
         data->gpsData.longitude = gps.location.lng();
-        data->gpsData.altitude  = gps.altitude.meters();
     } else {
         data->gpsData.latitude  = -33.0;   // Valor por defecto si no hay actualización
         data->gpsData.longitude = -71.54;  // Valor por defecto si no hay actualización
-        data->gpsData.altitude  = 0.0;     // Valor por defecto si no hay actualización
     }
 }
 
