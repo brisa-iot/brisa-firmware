@@ -125,6 +125,7 @@ void read_sensors(char* message, size_t messageSize) {
   float gyro_z = sensorData.imuPosData.gyroZ;          
 
   // SOC - V - A values
+  float currentBat = sensorData.powerData.batteryCurrent;
   float SOC = sensorData.powerData.batterySoC; 
 
   // Create JSON message
