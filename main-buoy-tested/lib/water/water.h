@@ -15,7 +15,7 @@
 // ---------------- Conductivity sensor ---------------- //
 #define ADC_CH_2                ADC1_CHANNEL_6                // ADC1 channel 6 --> GPIO34
 #define VREF_CONDUCTIVITY       (3.4f)                        // Reference voltage for conductivity sensor
-#define SCALE_CONDUCTIVITY      (3.4/(20.0f*1000.0f))         // Scale factor for conductivity sensor: for reading from 0 t0 20 uS/cm
+#define SCALE_CONDUCTIVITY      (3.4f/(20.0f*1000.0f))        // Scale factor for conductivity sensor: for reading from 0 t0 20 uS/cm
 #define OFFSET_CONDUCTIVITY     (0.0f)                        // Offset for conductivity sensor calibration
 // ---------------- Conductivity sensor ---------------- //
 
