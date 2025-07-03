@@ -97,7 +97,7 @@ void read_sensors(char* message, size_t messageSize) {
   waterWrapper.readAll(&sensorData);
 
   // Timestamp
-  unsigned long timestamp = sensorData.gpsData.timestamp_s; 
+  unsigned long long timestamp = sensorData.gpsData.timestamp_s; 
 
   // Simulate environmental data
   float temperature_air = sensorData.envData.temperature;     
@@ -130,7 +130,7 @@ void read_sensors(char* message, size_t messageSize) {
   // Create JSON message
   snprintf(message, messageSize,
           "{"
-          "\"ts\":%lu,"
+          "\"ts\":%llu,"
           "\"ta\":%.1f,\"hr\":%.1f,\"pa\":%.1f,"
           "\"ws\":%.1f,\"wd\":%d,"
           "\"tw\":%.1f,\"ph\":%.2f,\"ec\":%.1f,\"do\":%.2f,"
@@ -159,18 +159,14 @@ void uart_receive() {
 }
 
 void init_sensors(){
-  // Initialize each sensor (ADC setup, etc.)
   enviromentWrapper.initializeAll();
-  //Serial.println("Enviroment ready");
   delay(50);
   imuSensor.initialize();
-  //Serial.println("IMU ready");
   gps_neo_8m.initialize();
   delay(50);
   powerwrapper.initializeAll();
   delay(50);
   waterWrapper.initializeAll();
-  //Serial.println("Water ready");
   delay(50);
 }
   
