@@ -1,4 +1,4 @@
-# 🌊 BRISA — Smart, Low-Cost Interconnected Buoy for Coastal Monitoring Applications
+# 🌊 BRISA — Smart, Low-Cost Interconnected Buoy for Coastal Monitoring Applications - ESP32 Firmware
 
 **BRISA** is an innovative, low-cost, and interconnected buoy platform specifically designed for **coastal environmental monitoring**.
 
@@ -41,6 +41,53 @@ Below is a high-level architecture of the BRISA firmware:
   <img src="docs/brisa_platform_diagram.svg" alt="BRISA Platform Architecture Diagram" width="80%">
 </p>
 
+## Project Structure 📁
+
+```bash
+main-buoy-tested/
+│
+├── .pio/                  
+├── .vscode/               
+├── include/               # Global header files for the project
+├── lib/                   # Project libraries (modularized as classes)
+│   ├── common/            # Reusable utilities and global configuration
+│   │   ├── adc_measurements.{cpp,h}       # Sensor reading via ADC
+│   │   ├── i2c_measurements.{cpp,h}       # Sensor reading via I2C
+│   │   ├── one_wire_interface.{cpp,h}     # 1-Wire sensor interface
+│   │   ├── uart_interface.{cpp,h}         # UART/RS485 communication
+│   │   ├── global_config.h                  # Global configuration data structures
+│   │   ├── global_vars.{cpp,h}              # Global shared variables
+│   │   ├── params_config.h                  # Parameter macros and constants
+│   │   └── filters.h                        # Signal filtering (e.g., moving average)
+│   │
+│   ├── dynamics/          # System behavior split by dynamics type
+│   │   ├── fast_dynamics.{cpp,h}          # Fast dynamics (e.g., IMU)
+│   │   ├── medium_dynamics.{cpp,h}        # Medium dynamics (e.g., pressure, humidity)
+│   │   ├── slow_dynamics.{cpp,h}          # Slow dynamics (e.g., temperature, status)
+│   │   ├── power_monitor.{cpp,h}           # Power usage monitoring
+│   │
+│   ├── orchestrator/      # Main coordinator of tasks and sensors
+│   │   └── orchestrator.{cpp,h}
+│   │
+│   ├── tasks/             # FreeRTOS-based tasks per subsystem
+│   │   ├── _dynamics_task.{cpp,h}          # Base task for dynamic modules: power monitor & med. dynamics
+│   │   ├── slow_dynamics_task.{cpp,h}
+│   │   ├── imu_logger_task.{cpp,h}
+│   │   ├── LoRa_task.{cpp,h}
+│   │   └── gps_task.{cpp,h}    
+│
+├── src/                   # Main application code
+│   └── main.cpp           # Entry point: creates the main task (Orchestrator) that controls the entire system,
+│                           # manages sensors, communications, and sleep cycles using FreeRTOS
+│
+├── test/                  
+├── .gitignore             
+├── platformio.ini         # PlatformIO environment configuration
+├── README.md              # Main project documentation
+```
+
+---
+
 ## 🔌 Hardware Requirements
 
 This firmware has been developed and tested for optimal performance with an **ESP32 DevKit v1** and the following sensor modules:
@@ -63,10 +110,6 @@ This firmware has been developed and tested for optimal performance with an **ES
 ### 📦 External Libraries
 
 The following libraries are declared in the `lib_deps` section of `platformio.ini` and are automatically installed by PlatformIO during build time:
-
-### 📦 External Libraries
-
-The following libraries are declared in the `lib_deps` section of `platformio.ini`:
 
 - [`MPU9250_asukiaaa`](https://registry.platformio.org/libraries/asukiaaa/MPU9250_asukiaaa) `@^1.5.13`
 - [`TinyGPSPlus`](https://registry.platformio.org/libraries/mikalhart/TinyGPSPlus) `@^1.1.0`
@@ -216,76 +259,27 @@ Before building or flashing:
 
 1. **Install PlatformIO Core**:
    - Recommended: [Install PlatformIO as a VSCode extension](https://platformio.org/install/ide?install=vscode).
-   - Or via CLI:
-     ```bash
-     pip install platformio
-     ```
 
 2. **Clone the BRISA repository**:
    ```bash
    git clone https://github.com/your-org/brisa-firmware.git
-   cd brisa-firmware
+   cd brisa-firmware/main-buoy
    ```
 
-3. **Connect your ESP32 device via USB**:
-   - Confirm the port with:
-     ```bash
-     pio device list
-     ```
+### ⚙️ Build & Flash Instructions
+To learn how to:
+- Compile the project
+- Upload the firmware to the device
+- Monitor serial output
+- Run unit tests and debug
+
+please refer to the official PlatformIO guide for **Espressif32 + Arduino**:  
+👉 [Espressif32 Debugging & Unit Testing — PlatformIO Docs](https://docs.platformio.org/en/latest/tutorials/espressif32/arduino_debugging_unit_testing.html)
+
+> 💡 **Tip:** Double-check your `platformio.ini` file to confirm the upload port, serial monitor baud rate, and library dependencies.
 
 ---
 
-### ⚙️ Building the Firmware
-
-To compile the project:
-
-```bash
-pio run
-```
-
-PlatformIO will resolve dependencies, compile all sources, and generate the firmware binary.
-
----
-
-### 🔥 Flashing to the ESP32
-
-To build and upload the firmware to the ESP32:
-
-```bash
-pio run --target upload
-```
-
-> ℹ️ If multiple devices are connected or you need to specify the port manually:
-```bash
-pio run --target upload --upload-port /dev/ttyUSB0
-```
-
----
-
-### 🖥️ Serial Monitor (Optional)
-
-To view debug logs over serial:
-
-```bash
-pio device monitor
-```
-
-Or with baudrate (check `platformio.ini`):
-```bash
-pio device monitor -b 115200
-```
-
----
-
-### 🧹 Erase Flash (if needed)
-
-To fully erase flash (before first flash or during debugging):
-
-```bash
-pio run --target erase
-```
-
----
 
 ### 📦 Project Structure Reminder
 

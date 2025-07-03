@@ -11,7 +11,7 @@
 #define SWITCH_LOAD_PIN 23 
 
 #define MEASUREMENT_INTERVAL_US     30000000
-#define MEASUREMENT_WINDOW_MS       10000
+#define SAMPLING_TIME_WINDOW_MS     10000
 #define NUM_SAMPLES_PER_WINDOW      30
 
 
@@ -26,7 +26,7 @@ PowerWrapper powerwrapper;
 
 // ------------- Config. Parameters ------------- //
 uint64_t wakeupTs = MEASUREMENT_INTERVAL_US; 
-uint64_t windowTs = MEASUREMENT_WINDOW_MS;
+uint64_t windowTs = SAMPLING_TIME_WINDOW_MS;
 
 uint16_t num_samples_per_window = NUM_SAMPLES_PER_WINDOW; 
 
