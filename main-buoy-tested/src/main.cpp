@@ -138,7 +138,7 @@ void read_sensors(char* message, size_t messageSize) {
           "\"lat\":%.4f,\"lon\":%.4f,\"alt\":%.1f,"
           "\"a\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},"
           "\"g\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},"
-          "\"soc\":%.2f"
+          "\"i\":%.4f,\"soc\":%.2f"
           "}",
           timestamp,
           temperature_air, humidity, pressure,
@@ -146,7 +146,7 @@ void read_sensors(char* message, size_t messageSize) {
           water_temp, ph, conductivity, dissolved_oxygen,
           latitude, longitude, altitude,
           accel_x, accel_y, accel_z,
-          gyro_x, gyro_y, gyro_z, SOC);
+          gyro_x, gyro_y, gyro_z, currentBat, SOC);
 }
 
 void uart_send(const char* message) {
