@@ -23,5 +23,5 @@ void EnvironmentWrapper::readAll(SensorData* data) {
     data->envData.humidity = bme280Sensor.get_humidity();
     data->envData.pressure = bme280Sensor.get_pressure();
     data->envData.windSpeed = 6.0*anemometerSensor.get_value()*(5.0/3.3);
-    data->envData.windDirection = (float)vaneSensor.get_value();
+    data->envData.windDirection = vaneSensor.get_value();
 }

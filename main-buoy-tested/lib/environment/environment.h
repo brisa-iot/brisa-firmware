@@ -11,7 +11,13 @@
 #include "uart_lib.h"
 #include "data_structs.h"
 
-#define ADC_CH          ADC1_CHANNEL_3   // ADC1 channel 3 --> GPIO39
+// -------------------- ADC Anemometer Configuration ----------------
+#define ADC_CH_ANEMOMETER      ADC1_CHANNEL_3   // ADC1 channel 3 --> GPIO39
+#define VREF_ANEMOMETER       (5.0f)                      
+#define SCALE_ANEMOMETER      (1/6.0f)         
+#define OFFSET_ANEMOMETER     (0.0f)           
+// -----------------------------------------------------------------            
+
 #define BME280_ADDR     (0x76)           // I2C address of the BME280
 
 
@@ -32,7 +38,7 @@ public:
      * @param offset_      Offset for the sensor
      */
     EnvironmentWrapper()
-        : anemometerSensor(ADC_CH, ADC_ATTEN_DB_11, 1.0f, 0.0f), 
+        : anemometerSensor(ADC_CH_ANEMOMETER, ADC_ATTEN_DB_11, SCALE_ANEMOMETER, OFFSET_ANEMOMETER, VREF_ANEMOMETER), 
           vaneSensor(),
           bme280Sensor(BME280_ADDR) {} 
 

@@ -19,5 +19,5 @@ void PowerWrapper::readAll(SensorData* data){
     data->powerData.solarVoltage = buoyPower.get_solar_voltage();
     data->powerData.batteryCurrent = buoyPower.get_battery_current();
     data->powerData.solarCurrent = buoyPower.get_solar_current();
-    data->powerData.batterySoC = buoyPower.get_soc();   // Not in (%)
+    data->powerData.batterySoC = buoyPower.get_soc();   
 }

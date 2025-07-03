@@ -11,10 +11,17 @@
 
 
 #define ADC_CH_1        ADC1_CHANNEL_4  // ADC1 channel 4 --> GPIO32
-#define ADC_CH_2        ADC1_CHANNEL_6  // ADC1 channel 6 --> GPIO34
-#define ADC_CH_3        ADC1_CHANNEL_7  // ADC1 channel 7 --> GPIO35
-#define ONE_WIRE_BUS    33  // GPIO33 pin for OneWire bus
 
+// ---------------- Conductivity sensor ---------------- //
+#define ADC_CH_2                ADC1_CHANNEL_6                // ADC1 channel 6 --> GPIO34
+#define VREF_CONDUCTIVITY       (3.4f)                        // Reference voltage for conductivity sensor
+#define SCALE_CONDUCTIVITY      (3.4/(20.0f*1000.0f))         // Scale factor for conductivity sensor: for reading from 0 t0 20 uS/cm
+#define OFFSET_CONDUCTIVITY     (0.0f)                        // Offset for conductivity sensor calibration
+// ---------------- Conductivity sensor ---------------- //
+
+#define ADC_CH_3        ADC1_CHANNEL_7  // ADC1 channel 7 --> GPIO35
+
+#define ONE_WIRE_BUS    33              // GPIO33 pin for OneWire bus
 #define CONVERSION_DELAY 750            // Delay for DS18B20 conversion in milliseconds
 
 
@@ -62,7 +69,7 @@ public:
      */
     WaterWrapper() 
         : pHsensor(ADC_CH_1, ADC_ATTEN_DB_11, 1.0f, 0.0f), 
-          conductivitySensor(ADC_CH_2, ADC_ATTEN_DB_11, 1.0f, 0.0f), 
+          conductivitySensor(ADC_CH_2, ADC_ATTEN_DB_11, SCALE_CONDUCTIVITY, OFFSET_CONDUCTIVITY, VREF_CONDUCTIVITY), 
           oxygenSensor(ADC_CH_3, ADC_ATTEN_DB_11, 1.0f, 0.0f), 
           tempSensor() 
     {}

@@ -29,8 +29,6 @@ float BME280Sensor::get_humidity() {
         return 0.0f; 
     }
     humidity = bme.readHumidity();
-    //Serial.print("Humedad: ");
-    //Serial.println(humidity);
     return humidity;
 }
 
@@ -137,7 +135,30 @@ float INA219Sensor::get_solar_current() {
 }
 
 float INA219Sensor::get_soc() {
-    SoC = SoC - 
-    (batteryCurrent * (float)Ts) / ((float)capacity * 3600.0f * 1000.0f);
+    // ********** Find initial SoC Value: Binary Search + Interpolation ********** //
+    batteryVoltage = ina219Battery.getBusVoltage_V();
+
+    int num_voltages = sizeof(initSoC[0]) / sizeof(initSoC[0][0]);
+    int left = 0, right = num_voltages - 1;
+    int mid = 0;
+    while (left < right) {
+        mid = left + (right - left) / 2;
+        if (initSoC[0][mid] > batteryVoltage) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    if (left == 0) {
+        SoC = initSoC[1][0];
+    } else if (left == num_voltages) {
+        SoC = initSoC[1][num_voltages - 1];
+    } else {
+        // Linear interpolation: y = y1 + (x - x1) * (y2 - y1) / (x2 - x1)
+        SoC = initSoC[1][left - 1] + 
+             (batteryVoltage - initSoC[0][left - 1]) * 
+             (initSoC[1][left] - initSoC[1][left - 1]) / 
+             (initSoC[0][left] - initSoC[0][left - 1]);
+    }
     return SoC;
 }

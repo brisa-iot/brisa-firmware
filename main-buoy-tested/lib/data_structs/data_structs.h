@@ -15,7 +15,7 @@ struct EnvData {
     float humidity;         // Humidity value (%)
     float pressure;         // Pressure value (hPa)
     float windSpeed;        // Wind speed value 
-    float windDirection;   // Wind direction value
+    int windDirection;   // Wind direction value
 };
 
 struct PowerData {
@@ -45,7 +45,7 @@ struct GPSData {
     int hour; 
     int minute;
     int second;
-    uint64_t timestampMs;   // Timestamp in milliseconds
+    uint64_t timestamp_s;   // Timestamp in milliseconds
 }; 
 
 struct SensorData {

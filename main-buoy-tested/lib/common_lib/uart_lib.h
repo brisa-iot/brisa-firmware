@@ -13,6 +13,7 @@
 #define RXD1            5             // RX --> GPIO5
 #define TXD1            18            // TX --> GPIO18  
 #define UART_1          1             // UART Interface number for GPS NEO-8M 
+#define INIT_TIMESTAMP  1751511036ULL // Initial timestamp for testing (epoch seconds)
 // ------------------------------------ NEO-8M ------------------------------------ //
 
 // ------------------------------------ RS485: Vane ------------------------------------ //
@@ -81,8 +82,6 @@ public:
      * @param rxPin_    RX pin for RS485
      * @param txPin_    TX pin for RS485
      * @param uartn_    UART interface number for RS485
-     * @param RE_       RE pin for MAX485
-     * @param DE_       DE pin for MAX485
      */
     RS485(
         uint32_t baudRate_ = RS485_BAUD_RATE, 
@@ -97,7 +96,7 @@ public:
 
     void initialize();
     void get_data();
-    uint8_t get_value();
+    int get_value();
 
 public: 
     char buffer[BUFFER_SIZE];           // Buffer for RS485 data
