@@ -96,7 +96,7 @@ This firmware has been developed and tested for optimal performance with an **ES
 * **[BME280](https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/)** – I2C sensor for integrated temperature, humidity, and pressure measurements.
 * **[Analog pH Sensor Kit – Gravity by DFRobot](https://wiki.dfrobot.com/Analog_pH_Meter_Pro_SKU_SEN0169)** – Provides analog output for pH level monitoring.
 * **[Analog Dissolved Oxygen Sensor – Gravity by DFRobot](https://wiki.dfrobot.com/Gravity__Analog_Dissolved_Oxygen_Sensor_SKU_SEN0237)** – Essential for dissolved oxygen (DO) measurements.
-* **[Analog Electrical Conductivity Sensor – Gravity by DFRobot](https://wiki.dfrobot.com/SKU_SEN0451_Gravity_Analog_Electrical_Conductivity_Sensor_PRO_K_1)** – For accurate water conductivity readings.
+* **[Analog Electrical Conductivity Sensor – Gravity by DFRobot](https://es.aliexpress.com/item/1005003479288815.html#nav-specification)** – For accurate water conductivity readings.
 * **[OneWire Water Temperature Sensor – Gravity by DFRobot](https://wiki.dfrobot.com/Waterproof_DS18B20_Digital_Temperature_Sensor__SKU_DFR0198_)** – A waterproof DS18B20 sensor for precise water temperature.
 * **[Analog Anemometer – For Arduino by DFRobot (IP65)](https://wiki.dfrobot.com/Wind_Speed_Sensor_Voltage_Type_0-5V__SKU_SEN0170)** – An IP65-rated wind speed sensor with 0-5V analog output.
 * **[ModBus Vane Sensor](https://es.aliexpress.com/item/1005006987700011.html)** – A wind direction sensor featuring ModBus RS485 (4-20mA/0-5V) output.
