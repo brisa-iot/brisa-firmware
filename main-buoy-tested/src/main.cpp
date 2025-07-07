@@ -97,7 +97,7 @@ void read_sensors(char* message, size_t messageSize) {
   waterWrapper.readAll(&sensorData);
 
   // Timestamp
-  uint16_t timestamp = sensorData.gpsData.timestamp_s; 
+  uint64_t timestamp = sensorData.gpsData.timestamp_s; 
 
   // Simulate environmental data
   float temperature_air = sensorData.envData.temperature;     
